@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import NotFound from "./pages/NotFound";
@@ -20,8 +24,10 @@ const router = createBrowserRouter([
       { path: "videos/watch/:videoId", element: <VideoDetail /> },
     ],
   },
-]);
-const root = ReactDOM.createRoot(document.getElementById("root"));
+] as RouteObject[]);
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />

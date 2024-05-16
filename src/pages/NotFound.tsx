@@ -1,10 +1,5 @@
-import React from 'react';
+import React from "react";
 
-export default function NotFound(props) {
-    return (
-        <div>
-            NotFound😂
-        </div>
-    );
-}
-
+export const NotFound: React.FC = () => {
+  return <div>NotFound😂</div>;
+};
