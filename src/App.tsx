@@ -5,7 +5,7 @@ import { YoutubeApiProvider } from "./context/YoutubeApiContext";
 
 const queryClient = new QueryClient();
 
-export default function App(): React.FC {
+function App() {
   return (
     <>
       <SearchHeader />
@@ -17,3 +17,5 @@ export default function App(): React.FC {
     </>
   );
 }
+
+export default App;

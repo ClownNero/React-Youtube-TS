@@ -1,16 +1,48 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from "axios";
 
-// Mock Data 사용하여 JSON 로 읽는 파일
+export interface YoutubeApiResponse {
+  items: Array<{
+    id: {
+      videoId: string;
+    };
+    snippet: {
+      thumbnails: {
+        default: {
+          url: string;
+        };
+      };
+    };
+  }>;
+}
+
+export interface ChannelResponse {
+  items: Array<{
+    snippet: {
+      thumbnails: {
+        default: {
+          url: string;
+        };
+      };
+    };
+  }>;
+}
+
 export default class FakeYoutubeClient {
-    async search({params}){
-        return params.relatedToVideoId 
-            ? axios.get('/videos/related.json') 
-            : axios.get('/videos/search.json');
-    }
-    async videos(){
-        return axios.get('/videos/popular.json');
-    }
-    async channels() {
-        return axios.get('/videos/channel.json');
-    }
+  async search({
+    params,
+  }: {
+    params: { relatedToVideoId?: string };
+  }): Promise<AxiosResponse<YoutubeApiResponse>> {
+    return params.relatedToVideoId
+      ? axios.get<YoutubeApiResponse>("/videos/related.json")
+      : axios.get<YoutubeApiResponse>("/videos/search.json");
+  }
+
+  async videos(): Promise<AxiosResponse<YoutubeApiResponse>> {
+    return axios.get<YoutubeApiResponse>("/videos/popular.json");
+  }
+
+  async channels(): Promise<AxiosResponse<ChannelResponse>> {
+    return axios.get<ChannelResponse>("/videos/channel.json");
+  }
 }

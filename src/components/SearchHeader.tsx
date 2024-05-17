@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Params, useNavigate, useParams } from "react-router-dom";
 import { BsSearch, BsYoutube } from "react-icons/bs";
 
-export default function SearchHeader(): React.FC {
+const SearchHeader: React.FC = () => {
   const { keyword } = useParams<Params>();
   const [text, setText] = useState<string>("");
   const navigate = useNavigate();
@@ -34,4 +34,5 @@ export default function SearchHeader(): React.FC {
       </form>
     </header>
   );
-}
+};
+export default SearchHeader;

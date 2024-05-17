@@ -1,20 +1,70 @@
-import axios from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
-// Mock Data 사용하여 JSON 로 읽는 파일
+interface SearchResponse {
+  items: Array<{
+    id: {
+      videoId: string;
+    };
+    snippet: {
+      title: string;
+      description: string;
+      thumbnails: {
+        default: {
+          url: string;
+        };
+      };
+    };
+  }>;
+}
+
+interface VideosResponse {
+  items: Array<{
+    id: string;
+    snippet: {
+      title: string;
+      description: string;
+      thumbnails: {
+        default: {
+          url: string;
+        };
+      };
+    };
+  }>;
+}
+
+interface ChannelsResponse {
+  items: Array<{
+    id: string;
+    snippet: {
+      title: string;
+      description: string;
+      thumbnails: {
+        default: {
+          url: string;
+        };
+      };
+    };
+  }>;
+}
 export default class YoutubeClient {
-    constructor() {
-        this.httpClient = axios.create({
-            baseURL: 'https://www.googleapis.com/youtube/v3',
-            params:{ key: process.env.REACT_APP_YOUTUBE_API_KEY},
-        })
-    }
-    async search(params){
-        return this.httpClient.get('search', params);
-    }
-    async videos(params){
-        return this.httpClient.get('videos', params);
-    }
-    async channels(params){
-        return this.httpClient.get('channels', params);
-    }
+  private httpClient: AxiosInstance;
+
+  constructor() {
+    this.httpClient = axios.create({
+      baseURL: "https://www.googleapis.com/youtube/v3",
+      params: { key: process.env.REACT_APP_YOUTUBE_API_KEY },
+    });
+  }
+
+  async search(params: object): Promise<AxiosResponse<SearchResponse>> {
+    return this.httpClient.get<SearchResponse>("search", { params });
+  }
+
+  async videos(params: object): Promise<AxiosResponse<VideosResponse>> {
+    return this.httpClient.get<VideosResponse>("videos", { params });
+  }
+
+  async channels(params: object): Promise<AxiosResponse<ChannelsResponse>> {
+    return this.httpClient.get<ChannelsResponse>("channels", { params });
+  }
 }

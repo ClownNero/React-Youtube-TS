@@ -12,7 +12,7 @@ import NotFound from "./pages/NotFound";
 import Videos from "./pages/Videos";
 import VideoDetail from "./pages/VideoDetail";
 
-const router = createBrowserRouter([
+const routes: RouteObject[] = [
   {
     path: "/",
     element: <App />,
@@ -24,7 +24,9 @@ const router = createBrowserRouter([
       { path: "videos/watch/:videoId", element: <VideoDetail /> },
     ],
   },
-] as RouteObject[]);
+];
+
+const router = createBrowserRouter(routes);
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
