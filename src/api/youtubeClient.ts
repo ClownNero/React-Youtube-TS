@@ -57,14 +57,14 @@ export default class YoutubeClient {
   }
 
   async search(params: object): Promise<AxiosResponse<SearchResponse>> {
-    return this.httpClient.get<SearchResponse>("search", { params });
+    return this.httpClient.get<SearchResponse>("search", params);
   }
 
   async videos(params: object): Promise<AxiosResponse<VideosResponse>> {
-    return this.httpClient.get<VideosResponse>("videos", { params });
+    return this.httpClient.get<VideosResponse>("videos", params);
   }
 
   async channels(params: object): Promise<AxiosResponse<ChannelsResponse>> {
-    return this.httpClient.get<ChannelsResponse>("channels", { params });
+    return this.httpClient.get<ChannelsResponse>("channels", params);
   }
 }
