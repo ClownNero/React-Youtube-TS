@@ -1,51 +1,10 @@
 import { AxiosResponse } from "axios";
+import {
+  ChannelsResponse,
+  SearchResponse,
+  VideosResponse,
+} from "../models/apiTypes";
 // YouTube API 응답을 위한 인터페이스 정의
-interface SearchResponse {
-  items: Array<{
-    id: {
-      videoId: string;
-    };
-    snippet: {
-      title: string;
-      description: string;
-      thumbnails: {
-        default: {
-          url: string;
-        };
-      };
-    };
-  }>;
-}
-
-interface VideosResponse {
-  items: Array<{
-    id: string;
-    snippet: {
-      title: string;
-      description: string;
-      thumbnails: {
-        default: {
-          url: string;
-        };
-      };
-    };
-  }>;
-}
-
-interface ChannelsResponse {
-  items: Array<{
-    id: string;
-    snippet: {
-      title: string;
-      description: string;
-      thumbnails: {
-        default: {
-          url: string;
-        };
-      };
-    };
-  }>;
-}
 
 // apiClient 인터페이스 정의
 interface ApiClient {

@@ -2,20 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import ChannelInfo from "../components/ChannelInfo";
 import RelatedVideos from "../components/RelatedVideos";
-
-// video 객체의 snippet 부분을 위한 인터페이스 정의
-interface VideoSnippet {
-  title: string;
-  channelId: string;
-  channelTitle: string;
-  description: string;
-}
-
-// video 객체를 위한 인터페이스 정의
-interface Video {
-  id: string;
-  snippet: VideoSnippet;
-}
+import { Video } from "../models/videoType";
 
 // useLocation으로부터 반환되는 state의 타입을 정의하기 위한 인터페이스
 interface LocationState {

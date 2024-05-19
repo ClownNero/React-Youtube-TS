@@ -1,51 +1,10 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
+import {
+  ChannelsResponse,
+  SearchResponse,
+  VideosResponse,
+} from "../models/apiTypes";
 
-interface SearchResponse {
-  items: Array<{
-    id: {
-      videoId: string;
-    };
-    snippet: {
-      title: string;
-      description: string;
-      thumbnails: {
-        default: {
-          url: string;
-        };
-      };
-    };
-  }>;
-}
-
-interface VideosResponse {
-  items: Array<{
-    id: string;
-    snippet: {
-      title: string;
-      description: string;
-      thumbnails: {
-        default: {
-          url: string;
-        };
-      };
-    };
-  }>;
-}
-
-interface ChannelsResponse {
-  items: Array<{
-    id: string;
-    snippet: {
-      title: string;
-      description: string;
-      thumbnails: {
-        default: {
-          url: string;
-        };
-      };
-    };
-  }>;
-}
 export default class YoutubeClient {
   private httpClient: AxiosInstance;
 

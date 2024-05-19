@@ -3,22 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import VideoCard from "../components/VideoCard";
 import { useYoutubeApi } from "../context/YoutubeApiContext";
-
-interface VideoSnippet {
-  title: string;
-  thumbnails: {
-    medium: {
-      url: string;
-    };
-  };
-  channelTitle: string;
-  publishedAt: string;
-}
-
-interface Video {
-  id: string;
-  snippet: VideoSnippet;
-}
+import { Video } from "../models/videoType";
 
 export default function Videos() {
   const { keyword } = useParams<{ keyword: string }>();

@@ -2,22 +2,7 @@ import React from "react";
 import { useYoutubeApi } from "../context/YoutubeApiContext";
 import { useQuery } from "@tanstack/react-query";
 import VideoCard from "./VideoCard";
-
-interface VideoSnippet {
-  title: string;
-  thumbnails: {
-    medium: {
-      url: string;
-    };
-  };
-  channelTitle: string;
-  publishedAt: string;
-}
-
-interface Video {
-  id: string;
-  snippet: VideoSnippet;
-}
+import { Video } from "../models/videoType";
 
 interface RelatedVideosProps {
   id: string; // 여기서 id의 타입을 명시합니다.

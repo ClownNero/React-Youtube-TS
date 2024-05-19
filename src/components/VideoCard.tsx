@@ -1,22 +1,7 @@
 import React from "react";
 import { formatAgo } from "../util/date";
 import { useNavigate } from "react-router-dom";
-
-interface VideoSnippet {
-  title: string;
-  thumbnails: {
-    medium: {
-      url: string;
-    };
-  };
-  channelTitle: string;
-  publishedAt: string;
-}
-
-interface Video {
-  id: string;
-  snippet: VideoSnippet;
-}
+import { Video } from "../models/videoType";
 
 type VideoCardType = "list" | undefined;
 
@@ -39,7 +24,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
     >
       <img
         className={isList ? "w-60 mr-2" : "w-full"}
-        src={thumbnails.medium.url}
+        src={thumbnails?.medium.url}
         alt={title}
       />
       <div>
