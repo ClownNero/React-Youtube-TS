@@ -19,9 +19,10 @@ export default function VideoDetail() {
     <section className="flex flex-col lg:flex-row">
       <article className="basis-4/6">
         <iframe
+          className="rounded-md"
           id="player"
           width="100%"
-          height="640"
+          height="480"
           src={`https://www.youtube.com/embed/${video.id}`}
           frameBorder="0"
           title={title}

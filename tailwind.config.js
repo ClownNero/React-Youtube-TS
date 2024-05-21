@@ -22,4 +22,8 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    // 스크롤바 플러그인을 사용하려면 여기에 추가
+    require("tailwind-scrollbar"),
+  ],
 };

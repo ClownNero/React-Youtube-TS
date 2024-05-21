@@ -23,7 +23,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
       }}
     >
       <img
-        className={isList ? "w-60 mr-2" : "w-full"}
+        className={isList ? "w-60 mr-2 rounded-md" : "w-full rounded-md"}
         src={thumbnails?.medium.url}
         alt={title}
       />
