@@ -1,7 +1,8 @@
 export interface SearchResponse {
   items: Array<{
     id: {
-      videoId: string;
+      videoId?: string;
+      channelId?: string;
     };
     snippet: {
       title: string;

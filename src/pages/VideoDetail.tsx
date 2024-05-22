@@ -32,9 +32,10 @@ export default function VideoDetail() {
           <ChannelInfo id={channelId} name={channelTitle} />
           <pre className="whitespace-pre-wrap">{description}</pre>
         </div>
+        ``
       </article>
       <section className="basis-2/6">
-        <RelatedVideos id={video.id} />
+        <RelatedVideos id={channelId} />
       </section>
     </section>
   );

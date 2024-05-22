@@ -20,6 +20,7 @@ export default function Videos() {
       staleTime: 1000 * 60 * 10,
     }
   );
+
   return (
     <>
       <div>Videos {keyword ? `🍳${keyword}` : "🔥"}</div>
