@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ChannelInfo from "../components/ChannelInfo";
 import RelatedVideos from "../components/RelatedVideos";
@@ -11,15 +11,24 @@ interface LocationState {
 
 export default function VideoDetail() {
   const location = useLocation();
-  const state = location.state as LocationState; // Type assertion 사용
-  const { video } = state;
+  const [video, setVideo] = useState<Video | null>(null);
+  useEffect(() => {
+    const state = location.state as LocationState; // Type assertion 사용
+    setVideo(state.video);
+    console.log(location);
+  }, [location]);
+
+  if (!video) {
+    return <div>Loading...</div>;
+  }
   const { title, channelId, channelTitle, description } = video.snippet;
-  console.log(video);
+
   return (
     <section className="mx-4 flex flex-col lg:flex-row">
       <article className="basis-4/6">
         <iframe
-          className="rounded-md"
+          className="rounded-xl"
+          key={video.id}
           id="player"
           width="100%"
           height="480"
