@@ -14,7 +14,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
   const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
   const navigate = useNavigate();
   const isList = type === "list";
-
+  console.log(thumbnails);
   return (
     <li
       className={isList ? "flex gap-1 m-2 cursor-pointer" : "cursor-pointer"}
@@ -23,7 +23,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
       }}
     >
       <img
-        className={isList ? "w-60 mr-2 rounded-md" : "w-full rounded-md"}
+        className={isList ? "w-60 mr-2 rounded-xl" : "w-full rounded-xl"}
         src={thumbnails?.medium.url}
         alt={title}
       />
