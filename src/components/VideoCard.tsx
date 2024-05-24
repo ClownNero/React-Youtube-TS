@@ -18,7 +18,9 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
   console.log(thumbnails);
   return (
     <li
-      className={isList ? "flex gap-1 m-2 cursor-pointer" : "cursor-pointer"}
+      className={
+        isList ? "flex gap-1 mx-2 mb-3 cursor-pointer" : "cursor-pointer"
+      }
       onClick={() => {
         // 현재 페이지의 videoId와 클릭된 비디오의 id가 같지 않을 경우에만 navigate를 실행합니다.
         if (video.id.toString() !== videoId) {

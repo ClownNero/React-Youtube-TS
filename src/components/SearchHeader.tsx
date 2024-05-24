@@ -22,7 +22,7 @@ const SearchHeader: React.FC = () => {
       </Link>
       <form className="w-full flex justify-center" onSubmit={handleSubmit}>
         <input
-          className="w-6/12 p-2 outline-none bg-black text-gray-50 rounded-l-3xl border-2"
+          className="w-6/12 px-4 py-2 outline-none bg-black text-gray-50 rounded-l-3xl border-2"
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
