@@ -1,6 +1,6 @@
 import React from "react";
 import { formatAgo } from "../util/date";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Video } from "../models/videoType";
 
 type VideoCardType = "list" | undefined;
@@ -13,13 +13,17 @@ interface VideoCardProps {
 const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
   const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
   const navigate = useNavigate();
+  const { videoId } = useParams();
   const isList = type === "list";
   console.log(thumbnails);
   return (
     <li
       className={isList ? "flex gap-1 m-2 cursor-pointer" : "cursor-pointer"}
       onClick={() => {
-        navigate(`/videos/watch/${video.id}`, { state: { video: video } });
+        // 현재 페이지의 videoId와 클릭된 비디오의 id가 같지 않을 경우에만 navigate를 실행합니다.
+        if (video.id.toString() !== videoId) {
+          navigate(`/videos/watch/${video.id}`, { state: { video: video } });
+        }
       }}
     >
       <img
