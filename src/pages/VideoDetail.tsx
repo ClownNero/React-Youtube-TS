@@ -16,7 +16,7 @@ export default function VideoDetail() {
   const { title, channelId, channelTitle, description } = video.snippet;
   console.log(video);
   return (
-    <section className="flex flex-col lg:flex-row">
+    <section className="mx-4 flex flex-col lg:flex-row">
       <article className="basis-4/6">
         <iframe
           className="rounded-md"

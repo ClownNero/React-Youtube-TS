@@ -17,7 +17,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
 
   return (
     <li
-      className={isList ? "flex gap-1 m-2" : ""}
+      className={isList ? "flex gap-1 m-2 cursor-pointer" : "cursor-pointer"}
       onClick={() => {
         navigate(`/videos/watch/${video.id}`, { state: { video: video } });
       }}
@@ -28,9 +28,9 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
         alt={title}
       />
       <div>
-        <p className="font-semibold my-2 line-clamp-2">{title}</p>
-        <p className="text-sm opacity-80">{channelTitle}</p>
-        <p className="text-sm opacity-80">{formatAgo(publishedAt)}</p>
+        <p className="my-2 line-clamp-2">{title}</p>
+        <p className="text-sm opacity-70">{channelTitle}</p>
+        <p className="text-sm opacity-70">{formatAgo(publishedAt)}</p>
       </div>
     </li>
   );
