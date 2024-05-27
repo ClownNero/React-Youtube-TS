@@ -17,10 +17,11 @@ export default function Videos() {
     ["videos", keyword],
     () => youtube.search(keyword!),
     {
-      staleTime: 1000 * 60 * 10,
+      staleTime: 1000 * 60 * 5,
     }
   );
 
+  console.log(videos);
   return (
     <>
       {isLoading && <LoadingIndicator />}

@@ -14,16 +14,16 @@ export default function VideoDetail() {
   const state = location.state as LocationState; // Type assertion 사용
   const { video } = state;
   const { title, channelId, channelTitle, description } = video.snippet;
-  console.log(video);
+
   return (
     <section className="mx-4 flex flex-col lg:flex-row">
       <article className="basis-4/6">
         <iframe
-          className="rounded-md"
+          className="rounded-xl"
           key={video.id}
           id="player"
           width="100%"
-          height="360"
+          height="480px"
           src={`https://www.youtube.com/embed/${video.id}`}
           frameBorder="0"
           allowFullScreen

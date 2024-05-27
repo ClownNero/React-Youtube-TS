@@ -27,7 +27,7 @@ const SearchHeader: React.FC = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button className="bg-zinc-600 px-4 rounded-r-3xl border-y-2 border-r-2">
+        <button className="mr-10 bg-zinc-600 px-4 rounded-r-3xl border-y-2 border-r-2">
           <BsSearch />
         </button>
       </form>
