@@ -1,7 +1,10 @@
 import React from "react";
 import { formatAgo } from "../util/date";
+import { formatView } from "../util/view";
 import { useNavigate, useParams } from "react-router-dom";
 import { Video } from "../models/videoType";
+import { useQuery } from "@tanstack/react-query";
+import { useYoutubeApi } from "../context/YoutubeApiContext";
 
 type VideoCardType = "list" | undefined;
 
@@ -11,11 +14,28 @@ interface VideoCardProps {
 }
 
 const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
-  const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
+  const {
+    title,
+    thumbnails,
+    channelId: id,
+    channelTitle,
+    publishedAt,
+  } = video.snippet;
+  const { youtube } = useYoutubeApi();
   const navigate = useNavigate();
   const { videoId } = useParams();
   const isList = type === "list";
-  console.log(thumbnails);
+  const viewCount = video.statistics?.viewCount;
+
+  const { data: url } = useQuery<string, Error>(
+    ["channel", id],
+    () => youtube.channelImageURL(id),
+    {
+      staleTime: 1000 * 60 * 5,
+      enabled: !isList,
+    } // isList가 false일 때만 쿼리를 활성화
+  );
+
   return (
     <li
       className={
@@ -29,14 +49,22 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
       }}
     >
       <img
-        className={isList ? "w-60 mr-2 rounded-xl" : "w-full rounded-xl"}
+        className={isList ? "w-48 mr-2 rounded-xl" : "w-full rounded-xl"}
         src={thumbnails?.medium.url}
         alt={title}
       />
-      <div>
-        <p className="my-2 line-clamp-2">{title}</p>
-        <p className="text-sm opacity-70">{channelTitle}</p>
-        <p className="text-sm opacity-70">{formatAgo(publishedAt)}</p>
+      <div className={isList ? "" : "flex my-2"}>
+        {!isList && url && (
+          <img className="w-9 h-9 rounded-full" src={url} alt={channelTitle} />
+        )}
+        <div className={isList ? " " : "px-3"}>
+          <p className="line-clamp-2">{title}</p>
+          <p className="text-sm opacity-70">{channelTitle}</p>
+          <p className="text-sm opacity-70">
+            {viewCount ? `조회수 ${formatView(viewCount)}` : ""}{" "}
+            {formatAgo(publishedAt)}
+          </p>
+        </div>
       </div>
     </li>
   );

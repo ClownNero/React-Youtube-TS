@@ -38,7 +38,7 @@ export interface ChannelsResponse {
       title: string;
       description: string;
       thumbnails: {
-        medium: {
+        default: {
           url: string;
         };
       };

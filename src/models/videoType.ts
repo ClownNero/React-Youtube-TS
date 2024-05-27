@@ -11,7 +11,12 @@ export interface VideoSnippet {
   publishedAt?: string; // videoCard.tsx에서만 존재하므로 선택적 속성으로 처리
 }
 
+export interface VideoStatistics {
+  viewCount: number;
+}
+
 export interface Video {
   id: string;
   snippet: VideoSnippet;
+  statistics?: VideoStatistics;
 }
