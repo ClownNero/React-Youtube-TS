@@ -26,7 +26,7 @@ export default class Youtube {
   async channelImageURL(id: string): Promise<string> {
     return this.apiClient
       .channels({ params: { part: "snippet", id } })
-      .then((res) => res.data.items[0].snippet.thumbnails.medium.url);
+      .then((res) => res.data.items[0].snippet.thumbnails.default.url);
   }
   async relatedVideos(id: string): Promise<Array<{ id: string } & any>> {
     return this.apiClient
@@ -65,7 +65,7 @@ export default class Youtube {
     return this.apiClient
       .videos({
         params: {
-          part: "snippet",
+          part: "snippet,statistics",
           maxResults: 25,
           chart: "mostPopular",
           regionCode: "KR",
