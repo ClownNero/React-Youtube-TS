@@ -17,7 +17,7 @@ const SearchHeader: React.FC = () => {
   return (
     <header className="w-full flex px-4 text-2xl sticky top-0 z-10 bg-zinc-900 ">
       <Link to="/" className="flex items-center">
-        <img className="w-48" src="/images/youtubelogo.png" />
+        <img className="w-48" src="/images/youtubelogo.png" alt="Youtube" />
       </Link>
       <form className="w-full flex justify-center py-3" onSubmit={handleSubmit}>
         <input

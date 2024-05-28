@@ -29,11 +29,10 @@ export default function VideoDetail() {
     <div className="mx-4 flex flex-col lg:flex-row ">
       <section className="basis-4/6">
         <iframe
-          className="rounded-xl"
+          className="rounded-xl w-full aspect-video"
           key={video.id}
           id="player"
           width="100%"
-          height="480px"
           src={`https://www.youtube.com/embed/${video.id}`}
           frameBorder="0"
           allowFullScreen
@@ -46,7 +45,7 @@ export default function VideoDetail() {
             name={channelTitle}
             count={subscriberCount!}
           />
-          <button className="bg-zinc-600 text-left rounded-xl p-3 cursor-pointer hover:brightness-110">
+          <button className="w-full bg-zinc-600 text-left rounded-xl p-3 cursor-pointer hover:brightness-110">
             <div className="line-clamp-4">
               <p className="text-sm mb-2">
                 {viewCount ? `조회수 ${formatView(viewCount)}` : ""}{" "}
@@ -57,7 +56,7 @@ export default function VideoDetail() {
           </button>
         </article>
       </section>
-      <section className="basis-2/6 pl-6">
+      <section className="basis-2/6 lg:pl-6">
         <RelatedVideos id={channelId} />
       </section>
     </div>
