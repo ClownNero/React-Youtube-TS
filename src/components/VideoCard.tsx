@@ -58,9 +58,11 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
           <img className="w-9 h-9 rounded-full" src={url} alt={channelTitle} />
         )}
         <div className={isList ? " " : "px-3"}>
-          <p className="line-clamp-2">{title}</p>
-          <p className="text-sm opacity-70">{channelTitle}</p>
-          <p className="text-sm opacity-70">
+          <p className={`line-clamp-2 ${isList ? "text-sm" : ""}`}>{title}</p>
+          <p className={`opacity-70 ${isList ? "text-xs" : "text-sm"}`}>
+            {channelTitle}
+          </p>
+          <p className={`opacity-70 ${isList ? "text-xs" : "text-sm"}`}>
             {viewCount ? `조회수 ${formatView(viewCount)}` : ""}{" "}
             {formatAgo(publishedAt)}
           </p>

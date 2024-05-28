@@ -45,3 +45,12 @@ export interface ChannelsResponse {
     };
   }>;
 }
+
+export interface SubscribersResponse {
+  items: Array<{
+    id: string;
+    statistics: {
+      subscriberCount: number;
+    };
+  }>;
+}

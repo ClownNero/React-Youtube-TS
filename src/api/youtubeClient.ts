@@ -2,6 +2,7 @@ import axios, { AxiosInstance, AxiosResponse } from "axios";
 import {
   ChannelsResponse,
   SearchResponse,
+  SubscribersResponse,
   VideosResponse,
 } from "../models/apiTypes";
 
@@ -25,5 +26,10 @@ export default class YoutubeClient {
 
   async channels(params: object): Promise<AxiosResponse<ChannelsResponse>> {
     return this.httpClient.get<ChannelsResponse>("channels", params);
+  }
+  async subscribers(
+    params: object
+  ): Promise<AxiosResponse<SubscribersResponse>> {
+    return this.httpClient.get<SubscribersResponse>("channels", params);
   }
 }

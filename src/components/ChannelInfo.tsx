@@ -1,14 +1,15 @@
-import React from "react";
 import { useYoutubeApi } from "../context/YoutubeApiContext";
 import { useQuery } from "@tanstack/react-query";
+import { formatView } from "../util/view";
 
 // Props에 대한 인터페이스 정의
 interface ChannelInfoProps {
   id: string;
   name: string;
+  count: number;
 }
 
-export default function ChannelInfo({ id, name }: ChannelInfoProps) {
+export default function ChannelInfo({ id, name, count }: ChannelInfoProps) {
   const { youtube } = useYoutubeApi();
   const { data: url } = useQuery<string, Error>(
     ["channel", id],
@@ -16,9 +17,12 @@ export default function ChannelInfo({ id, name }: ChannelInfoProps) {
     { staleTime: 1000 * 60 * 5 }
   );
   return (
-    <div className="flex my-4 mb-8 items-center">
+    <div className="flex my-4 mb-6 items-start">
       {url && <img className="w-9 h-9 rounded-full" src={url} alt={name} />}
-      <p className="text-lg font-medium ml-2">{name}</p>
+      <div className="ml-2 ">
+        <p className="font-medium">{name}</p>
+        <p className="text-xs opacity-70">{`구독자 ${formatView(count)}`}</p>
+      </div>
     </div>
   );
 }

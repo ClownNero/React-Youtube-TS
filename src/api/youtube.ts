@@ -2,6 +2,7 @@ import { AxiosResponse } from "axios";
 import {
   ChannelsResponse,
   SearchResponse,
+  SubscribersResponse,
   VideosResponse,
 } from "../models/apiTypes";
 // YouTube API 응답을 위한 인터페이스 정의
@@ -11,6 +12,7 @@ interface ApiClient {
   search(params: object): Promise<AxiosResponse<SearchResponse>>;
   videos(params: object): Promise<AxiosResponse<VideosResponse>>;
   channels(params: object): Promise<AxiosResponse<ChannelsResponse>>;
+  subscribers(params: object): Promise<AxiosResponse<SubscribersResponse>>;
 }
 
 // Youtube 클래스에 대한 타입 정의
@@ -28,6 +30,13 @@ export default class Youtube {
       .channels({ params: { part: "snippet", id } })
       .then((res) => res.data.items[0].snippet.thumbnails.default.url);
   }
+
+  async channelSubscriber(id: string): Promise<number> {
+    return this.apiClient
+      .subscribers({ params: { part: "statistics", id } })
+      .then((res) => res.data.items[0].statistics.subscriberCount);
+  }
+
   async relatedVideos(id: string): Promise<Array<{ id: string } & any>> {
     return this.apiClient
       .search({
