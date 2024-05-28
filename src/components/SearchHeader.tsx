@@ -15,7 +15,7 @@ const SearchHeader: React.FC = () => {
   useEffect(() => setText(keyword || ""), [keyword]);
 
   return (
-    <header className="w-full flex  px-6 text-2xl sticky top-0 z-10 bg-zinc-900 ">
+    <header className="w-full flex px-4 text-2xl sticky top-0 z-10 bg-zinc-900 ">
       <Link to="/" className="flex items-center">
         <img className="w-48" src="/images/youtubelogo.png" />
       </Link>

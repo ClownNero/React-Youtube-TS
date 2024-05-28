@@ -21,7 +21,6 @@ export default function Videos() {
     }
   );
 
-  console.log(videos);
   return (
     <>
       {isLoading && <LoadingIndicator />}

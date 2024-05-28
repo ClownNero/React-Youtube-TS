@@ -18,10 +18,10 @@ export default function VideoDetail() {
   const { video } = state;
   const { title, channelId, channelTitle, description, publishedAt } =
     video.snippet;
-  const viewCount = video.statistics!.viewCount;
+  const viewCount = video.statistics?.viewCount;
   const { youtube } = useYoutubeApi();
   const { data: subscriberCount } = useQuery<number, Error>(
-    ["subsriber", channelId],
+    ["subscriber", channelId],
     () => youtube.channelSubscriber(channelId),
     { staleTime: 1000 * 60 * 5 }
   );
@@ -49,7 +49,8 @@ export default function VideoDetail() {
           <button className="bg-zinc-600 text-left rounded-xl p-3 cursor-pointer hover:brightness-110">
             <div className="line-clamp-4">
               <p className="text-sm mb-2">
-                {`조회수 ${formatView(viewCount)}`} {formatAgo(publishedAt)}
+                {viewCount ? `조회수 ${formatView(viewCount)}` : ""}{" "}
+                {formatAgo(publishedAt)}
               </p>
               <pre className="text-xs whitespace-pre-wrap">{description}</pre>
             </div>
