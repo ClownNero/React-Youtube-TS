@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Params, useNavigate, useParams } from "react-router-dom";
-import { BsSearch, BsYoutube } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
 
 const SearchHeader: React.FC = () => {
   const { keyword } = useParams<Params>();
@@ -15,12 +15,11 @@ const SearchHeader: React.FC = () => {
   useEffect(() => setText(keyword || ""), [keyword]);
 
   return (
-    <header className="w-full flex  px-6 py-4 text-2xl sticky top-0 z-10 bg-zinc-900 ">
+    <header className="w-full flex  px-6 text-2xl sticky top-0 z-10 bg-zinc-900 ">
       <Link to="/" className="flex items-center">
-        <BsYoutube className="text-4xl text-brand" />
-        <h1 className="font-bold ml-2 text-3xl">Youtube</h1>
+        <img className="w-48" src="/images/youtubelogo.png" />
       </Link>
-      <form className="w-full flex justify-center" onSubmit={handleSubmit}>
+      <form className="w-full flex justify-center py-3" onSubmit={handleSubmit}>
         <input
           className="w-6/12 px-4 py-2 outline-none bg-black text-gray-50 rounded-l-3xl border-2"
           type="text"
