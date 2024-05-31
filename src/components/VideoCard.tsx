@@ -2,6 +2,7 @@ import React from "react";
 import { formatAgo } from "../util/date";
 import { useNavigate, useParams } from "react-router-dom";
 import { Video } from "../models/videoType";
+import { formatView } from "../util/view";
 
 type VideoCardType = "list" | undefined;
 
@@ -13,9 +14,9 @@ interface VideoCardProps {
 const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
   const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
   const navigate = useNavigate();
+  const viewCount = video.statistics?.viewCount;
   const { videoId } = useParams();
   const isList = type === "list";
-  console.log(thumbnails);
   return (
     <li
       className={
@@ -34,9 +35,12 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
         alt={title}
       />
       <div>
-        <p className="my-2 line-clamp-2">{title}</p>
+        <p className="mt-2 mb-1 line-clamp-2">{title}</p>
         <p className="text-sm opacity-70">{channelTitle}</p>
-        <p className="text-sm opacity-70">{formatAgo(publishedAt)}</p>
+        <p className="text-sm opacity-70">
+          {viewCount ? `조회수 ${formatView(viewCount)}` : ""}{" "}
+          {formatAgo(publishedAt)}
+        </p>
       </div>
     </li>
   );

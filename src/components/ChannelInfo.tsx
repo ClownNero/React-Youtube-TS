@@ -19,7 +19,7 @@ export default function ChannelInfo({ id, name, count }: ChannelInfoProps) {
   return (
     <div className="flex my-4 mb-6 items-start">
       {url && <img className="w-9 h-9 rounded-full" src={url} alt={name} />}
-      <div className="ml-2 ">
+      <div className="ml-3">
         <p className="font-medium">{name}</p>
         <p className="text-xs opacity-70">{`구독자 ${formatView(count)}`}</p>
       </div>
