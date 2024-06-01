@@ -6,6 +6,7 @@ import { formatView } from "../util/view";
 import { formatAgo } from "../util/date";
 import { useYoutubeApi } from "../context/YoutubeApiContext";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 // useLocation으로부터 반환되는 state의 타입을 정의하기 위한 인터페이스
 interface LocationState {
@@ -13,6 +14,7 @@ interface LocationState {
 }
 
 export default function VideoDetail() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const location = useLocation();
   const state = location.state as LocationState; // Type assertion 사용
   const { video } = state;
@@ -45,8 +47,11 @@ export default function VideoDetail() {
             name={channelTitle}
             count={subscriberCount!}
           />
-          <button className="w-full bg-zinc-600 text-left rounded-xl p-3 cursor-pointer hover:brightness-110">
-            <div className="line-clamp-4">
+          <button
+            onClick={() => setIsOpen((prev) => !prev)}
+            className="w-full bg-zinc-600 text-left rounded-xl p-3 cursor-pointer hover:brightness-110"
+          >
+            <div className={isOpen ? "" : "line-clamp-4"}>
               <p className="text-sm mb-2">
                 {viewCount ? `조회수 ${formatView(viewCount)}` : ""}{" "}
                 {formatAgo(publishedAt)}
