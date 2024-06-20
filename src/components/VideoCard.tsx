@@ -37,10 +37,14 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, type }) => {
       <div>
         <p className="mt-2 mb-1 line-clamp-2">{title}</p>
         <p className="text-sm opacity-70">{channelTitle}</p>
-        <p className="text-sm opacity-70">
-          {viewCount ? `조회수 ${formatView(viewCount)}` : ""}{" "}
-          {formatAgo(publishedAt)}
-        </p>
+        {isList ? (
+          ""
+        ) : (
+          <span className="text-sm opacity-70 after:content-['•']">
+            {viewCount ? `조회수 ${formatView(viewCount)} ` : " "}
+          </span>
+        )}
+        <span className="text-sm opacity-70"> {formatAgo(publishedAt)}</span>
       </div>
     </li>
   );
