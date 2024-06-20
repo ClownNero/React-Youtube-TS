@@ -67,7 +67,7 @@ export default class Youtube {
         },
       })
       .then((res) =>
-        res.data.items.map((item) => ({ ...item, id: item.id.channelId }))
+        res.data.items.map((item) => ({ ...item, id: item.id.videoId }))
       );
   }
   async #mostPopular(): Promise<any> {
