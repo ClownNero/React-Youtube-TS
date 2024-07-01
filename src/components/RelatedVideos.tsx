@@ -1,5 +1,5 @@
 import React from "react";
-import { useYoutubeApi } from "../context/YoutubeApiContext";
+import { useYoutubeApi } from "../store/YoutubeApiStore";
 import { useQuery } from "@tanstack/react-query";
 import VideoCard from "./VideoCard";
 import { Video } from "../models/videoType";

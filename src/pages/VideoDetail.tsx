@@ -4,7 +4,7 @@ import RelatedVideos from "../components/RelatedVideos";
 import { Video } from "../models/videoType";
 import { formatView } from "../util/view";
 import { formatAgo } from "../util/date";
-import { useYoutubeApi } from "../context/YoutubeApiContext";
+import { useYoutubeApi } from "../store/YoutubeApiStore";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 

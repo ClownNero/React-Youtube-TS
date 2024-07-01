@@ -40,6 +40,7 @@ import { create } from "zustand";
 // }
 
 // zustand를 사용하니 확실히 코드 수가 줄어듦.
+// 초기 설정 및 관리 용이하다.
 interface YoutubeApiState {
   youtube: Youtube;
 }

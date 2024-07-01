@@ -1,4 +1,4 @@
-import { useYoutubeApi } from "../context/YoutubeApiContext";
+import { useYoutubeApi } from "../store/YoutubeApiStore";
 import { useQuery } from "@tanstack/react-query";
 import { formatView } from "../util/view";
 
