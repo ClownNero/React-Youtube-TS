@@ -22,7 +22,7 @@
 
 <p align="center">
   <img src="https://github.com/ClownNero/Algorithm/assets/110890911/4bdcd1b3-2f58-41ba-aa8a-628ace187eec"
-    width="70%"/>
+    width="90%"/>
 </p>
 
 <br/>
